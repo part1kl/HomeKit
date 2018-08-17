@@ -8,6 +8,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
+import net.part1kl.homekit.core.comm.EmailClient;
+
 /** This class is for Nexus testing only.
  * 
  * 
@@ -54,6 +56,11 @@ import java.util.Scanner;
 public class NexusTesting {
 
 	public static void main(String[] args) throws Exception {
+		EmailClient client = new EmailClient("C:\\Users\\Ricoc\\OneDrive\\Programming\\Java\\HomeKit-non-github-resources\\email-profiles\\");
+		System.out.println(client.getAsyncUsername());
+	}
+	
+	private void socketStuff() throws Exception{
 		Thread clientThread = new Thread(()->{
 			try {
 				Socket client = new Socket("127.0.0.1", 25565);
