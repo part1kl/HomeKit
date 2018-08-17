@@ -26,7 +26,7 @@ package net.part1kl.homekit.deployment.executables;
  * 		</tr>
  * 		<tr>
  * 			<th> Class: </th>
- * 			<td> Testing </td>
+ * 			<td> DeploymentTesting </td>
  * 		</tr>
  * 		<tr>
  * 			<th> Version: </th>
@@ -46,6 +46,6 @@ package net.part1kl.homekit.deployment.executables;
  * 		</tr>
  * </table>
  */
-public class Testing {
+public class DeploymentTesting {
 
 }
