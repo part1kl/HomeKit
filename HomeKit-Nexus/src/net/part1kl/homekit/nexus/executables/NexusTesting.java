@@ -54,10 +54,17 @@ import net.part1kl.homekit.core.comm.EmailClient;
  * </table>
  */
 public class NexusTesting {
+	
+	public static String DEVICE_ID = "Nexus_Testing";
 
 	public static void main(String[] args) throws Exception {
-		EmailClient client = new EmailClient("C:\\Users\\Ricoc\\OneDrive\\Programming\\Java\\HomeKit-non-github-resources\\email-profiles\\");
-		System.out.println(client.getAsyncUsername());
+		EmailClient client = new EmailClient(DEVICE_ID, "C:\\Users\\Ricoc\\OneDrive\\Programming\\Java\\HomeKit-non-github-resources\\email-profiles\\");
+		
+		client.sendAsyncMessage(EmailClient.ALL, "Testing");
+		
+		client.cleanup();
+		
+		System.out.println("Done.");
 	}
 	
 	private void socketStuff() throws Exception{
