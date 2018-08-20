@@ -8,7 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-import net.part1kl.homekit.core.comm.EmailClient;
+import net.part1kl.homekit.core.comm.email.EmailClient;
 
 /** This class is for Nexus testing only.
  * 
@@ -60,7 +60,11 @@ public class NexusTesting {
 	public static void main(String[] args) throws Exception {
 		EmailClient client = new EmailClient(DEVICE_ID, "C:\\Users\\Ricoc\\OneDrive\\Programming\\Java\\HomeKit-non-github-resources\\email-profiles\\");
 		
-		client.sendAsyncMessage(EmailClient.ALL, "Testing");
+		client.checkAsyncInbox(); //TODO: create custom listener Runnable that will send EmailClient new messages if they apply to the current DEVICE_ID.
+		
+		client.sendAsyncMessage(EmailClient.ALL, "Test All");
+		
+		client.checkAsyncInbox();
 		
 		client.cleanup();
 		
