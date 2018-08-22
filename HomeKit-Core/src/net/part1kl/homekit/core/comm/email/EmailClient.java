@@ -5,7 +5,10 @@ package net.part1kl.homekit.core.comm.email;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Date;
+import java.util.HashMap;
 
+import javax.mail.Message;
 import javax.mail.MessagingException;
 
 import net.part1kl.homekit.core.comm.email.messageTypes.AsyncMessage;
@@ -71,10 +74,15 @@ public class EmailClient {
 	
 	private Email EMAIL_ASYNC, EMAIL_USER;
 	
+	private HashMap<Date, Message> ASYNC_MESSAGES = new HashMap<Date, Message>();
+	
+	private AsyncMessageInterpreter ASYNC_MESSAGE_READER;
+	
 	public EmailClient(String deviceID, String emailProfilePath) throws FileNotFoundException, MessagingException {
 		DEVICE_ID = deviceID;
 		EMAIL_ASYNC = new Email(ASYNC, emailProfilePath);
 		EMAIL_USER = new Email(USER, emailProfilePath);
+		ASYNC_MESSAGE_READER = new AsyncMessageInterpreter(EMAIL_ASYNC, ASYNC_MESSAGES);
 	}
 
 //MESSAGE SENDINGE	
@@ -95,7 +103,7 @@ public class EmailClient {
 	 * @throws MessagingException Catches if the client is unable to update the inbox.
 	 */
 	public void checkAsyncInbox() throws MessagingException {
-		System.out.println("Number of emails: "+EMAIL_ASYNC.INBOX.getMessageCount());
+		
 	}
 	
 	public void cleanup() throws MessagingException {
